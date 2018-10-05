@@ -1,6 +1,5 @@
 terraform.tfvars
 terraform.tfplan
-terraform.tfstate
 ./*.tfstate
 .terraform/
 *.log
