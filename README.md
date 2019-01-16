@@ -9,7 +9,6 @@ Configuration for storing terraform state in an S3 bucket
 attributes shared by all zones
 - provider
 - route53 delegation set
-- 
 ## outputs.tf
 Values output from terraform apply
 
