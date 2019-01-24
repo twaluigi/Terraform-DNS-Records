@@ -40,44 +40,18 @@ resource "aws_route53_record" "www_thomaswygonik_com" {
   }
 }
 
-# SES Records
-
-resource "aws_route53_record" "_amazonses_thomaswygonik_com" {
-  name    = "_amazonses.thomaswygonik.com"
+resource "aws_route53_record" "google-site-verification_thomaswygonik_com" {
+  name = "thomaswygonik.com"
   zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
-  type    = "TXT"
-  ttl     = "1800"
-  records = ["MwBWXuhiHEV4f+DcyDYUEXYpD5HyxKjnroPtjvi4UnM="]
+  type = "TXT"
+  ttl = "1800"
+  records = ["google-site-verification=9QGCAopX4SIztZBhGn7XlTuH14ruEtAacOWmcPwN47M"]
 }
 
-resource "aws_route53_record" "_398c53b44a71cfb214dc5e02b196561b_thomaswygonik_com" {
-  name    = "_398c53b44a71cfb214dc5e02b196561b.thomaswygonik.com"
+resource "aws_route53_record" "google-mx_thomaswygonik_com" {
+  name = "thomaswygonik.com"
   zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["_a277993a078619eee53584817a81528a.tljzshvwok.acm-validations.aws."]
-}
-
-resource "aws_route53_record" "3vyhs3agxaiqpvgwki42kzr5gjbpkhnl_domainkey_thomaswygonik_com" {
-  name    = "3vyhs3agxaiqpvgwki42kzr5gjbpkhnl._domainkey.thomaswygonik.com"
-  zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
-  type    = "CNAME"
-  ttl     = "1800"
-  records = ["3vyhs3agxaiqpvgwki42kzr5gjbpkhnl.dkim.amazonses.com"]
-}
-
-resource "aws_route53_record" "e5o5by5kho7ncoy2vgg3zrrr5ytqumne_domainkey_thomaswygonik_com" {
-  name    = "e5o5by5kho7ncoy2vgg3zrrr5ytqumne._domainkey.thomaswygonik.com"
-  zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
-  type    = "CNAME"
-  ttl     = "1800"
-  records = ["e5o5by5kho7ncoy2vgg3zrrr5ytqumne.dkim.amazonses.com"]
-}
-
-resource "aws_route53_record" "ztacxsbparfqooc4mxo2rrpcqvnyp2g3_domainkey_thomaswygonik_com" {
-  name    = "ztacxsbparfqooc4mxo2rrpcqvnyp2g3._domainkey.thomaswygonik.com"
-  zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
-  type    = "CNAME"
-  ttl     = "1800"
-  records = ["ztacxsbparfqooc4mxo2rrpcqvnyp2g3.dkim.amazonses.com"]
+  type = "MX"
+  ttl = "3600"
+  records = ["1 ASPMX.L.GOOGLE.COM", "5 ALT1.ASPMX.L.GOOGLE.COM", "5 ALT2.ASPMX.L.GOOGLE.COM", "10 ALT3.ASPMX.L.GOOGLE.COM", "10 ALT4.ASPMX.L.GOOGLE.COM"]
 }
