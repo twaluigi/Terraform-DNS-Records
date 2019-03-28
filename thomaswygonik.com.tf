@@ -4,6 +4,7 @@ resource "aws_route53_zone" "thomaswygonik_com" {
 }
 
 resource "aws_route53_record" "gsuite_txt_thomaswygonik_com" {
+
   zone = "${aws_route53_zone.thomaswygonik_com.id}"
   name = "thomaswygonik.com"
   type = "TXT"
