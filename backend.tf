@@ -1,9 +1,10 @@
-terraform {
-  backend "s3" {
-    bucket         = "tomwygonik-tfstate"
-    key            = "terraform/dns/terraform_dns_project.tfstate"
-    region         = "us-east-2"
-    dynamodb_table = "tomwygonik-tfstate-lock"
-    encrypt        = true
-  }
+provider "aws" {
+  region = "${var.aws_region}"
 }
+
+terraform {
+  backend "s3" {}
+  required_version = ">= 0.12"
+}
+
+data "aws_caller_identity" "current" {}
