@@ -2,20 +2,17 @@
 
 [![pipeline status](https://gitlab.com/twaluigi/terraform-dns-records/badges/master/pipeline.svg)](https://gitlab.com/twaluigi/terraform-dns-records/commits/master)
 
-Various DNS records for the tomwygonik org AWS infrastructure
+Various DNS records for the AWS Infrastructure
 
-## backend.tf
-Configuration for storing terraform state in an S3 bucket
+Using terragrunt as a wrapper to avoid hardcoding backend config and to keep code DRY
 
-## common.tf
-attributes shared by all zones
-- provider
-- route53 delegation set
-## outputs.tf
-Values output from terraform apply
+## main.tf
+Backend config
 
 ## variables.tf
-Variables necessary to run terraform
 
-## thomaswygonik.com.tf, tomwy.com.tf, tomwygonik.com.tf
-DNS records for individual hosted zones
+- region - the AWS region to create resources in (this doesn't matter since all resources should be for Route53)
+- master_account_number - the account number where these records should be created (in my infrastructure, this is the master account)
+
+## domain files
+Defines the hosted zone and records for that particular domain
