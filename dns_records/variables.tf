@@ -1,3 +1,5 @@
-variable "aws_region" {
+variable "region" {
     default = "us-west-2"
 }
+
+variable "master_account_number" {}
