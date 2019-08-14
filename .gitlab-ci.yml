@@ -1,0 +1,48 @@
+image: registry.gitlab.com/twaluigi/terraform-tomwygonik-website/terragrunt:latest
+
+stages:
+  - init
+  - validate
+  - plan
+  - apply
+
+variables:
+  STATE_BUCKET: ${STATE_BUCKET}
+  STATE_KEY: ${STATE_KEY}
+  STATE_TABLE: ${STATE_TABLE}
+
+init:
+  stage: init
+  script:
+    - terragrunt init --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records
+  cache:
+    paths:
+      - dns_records/.terraform
+
+validate:
+  stage: validate
+  script:
+    - terragrunt validate --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records
+  cache:
+    paths:
+      - dns_records/.terraform
+
+plan:
+  stage: plan
+  script:
+    - terragrunt plan --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records -out=plan_out.tfstate -var-file="${TFVARS_FILE}"
+  cache:
+    paths:
+      - dns_records/.terraform
+      - dns_records/plan_out.tfstate
+
+apply:
+  stage: apply
+  script:
+    - terragrunt apply --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records plan_out.tfstate
+  dependencies:
+    - plan
+  cache:
+    paths:
+      - dns_records/.terraform
+      - dns_records/plan_out.tfstate
