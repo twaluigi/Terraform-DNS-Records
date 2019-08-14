@@ -1,5 +1,7 @@
 # Route 53 DNS Records
 
+[![pipeline status](https://gitlab.com/twaluigi/terraform-dns-records/badges/master/pipeline.svg)](https://gitlab.com/twaluigi/terraform-dns-records/commits/master)
+
 Various DNS records for the tomwygonik org AWS infrastructure
 
 ## backend.tf
