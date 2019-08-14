@@ -30,19 +30,19 @@ validate:
 plan:
   stage: plan
   script:
-    - terragrunt plan --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records -out=plan_out.tfstate -var-file="${TFVARS_FILE}"
+    - terragrunt plan --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records -out=terraform.tfplan -var-file="${TFVARS_FILE}"
   cache:
     paths:
       - dns_records/.terraform
-      - dns_records/plan_out.tfstate
+      - dns_records/terraform.tfplan
 
 apply:
   stage: apply
   script:
-    - terragrunt apply --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records plan_out.tfstate
+    - terragrunt apply --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records terraform.tfplan
   dependencies:
     - plan
   cache:
     paths:
       - dns_records/.terraform
-      - dns_records/plan_out.tfstate
+      - dns_records/terraform.tfplan
