@@ -3,20 +3,20 @@ resource "aws_route53_zone" "tomwy_com" {
 }
 
 resource "aws_route53_record" "home_tomwy_com_subdomain" {
-  zone_id = "${aws_route53_zone.tomwy_com.zone_id}"
+  zone_id = aws_route53_zone.tomwy_com.zone_id
   name = "home.tomwy.com"
   type = "NS"
   ttl = "172800"
   records = [
-    "${aws_route53_zone.home_tomwy_com.name_servers.0}",
-    "${aws_route53_zone.home_tomwy_com.name_servers.1}",
-    "${aws_route53_zone.home_tomwy_com.name_servers.2}",
-    "${aws_route53_zone.home_tomwy_com.name_servers.3}",
+    aws_route53_zone.home_tomwy_com.name_servers.0
+    aws_route53_zone.home_tomwy_com.name_servers.1,
+    aws_route53_zone.home_tomwy_com.name_servers.2,
+    aws_route53_zone.home_tomwy_com.name_servers.3,
   ]
 }
 
 resource "aws_route53_record" "gsuite_tomwy_com_validation" {
-  zone_id = "${aws_route53_zone.tomwy_com.zone_id}"
+  zone_id = aws_route53_zone.tomwy_com.zone_id
   name    = "tomwy.com"
   type    = "TXT"
   ttl     = "3600"
@@ -24,7 +24,7 @@ resource "aws_route53_record" "gsuite_tomwy_com_validation" {
 }
 
 resource "aws_route53_record" "gsuite_tomwy_com_MX" {
-  zone_id = "${aws_route53_zone.tomwy_com.zone_id}"
+  zone_id = aws_route53_zone.tomwy_com.zone_id
   name    = "tomwy.com"
   type    = "MX"
   ttl     = "3600"

@@ -3,7 +3,7 @@ resource "aws_route53_zone" "tomwygonik_com" {
 }
 
 resource "aws_route53_record" "gsuite_tomwygonik_com_validation" {
-  zone_id = "${aws_route53_zone.tomwygonik_com.zone_id}"
+  zone_id = aws_route53_zone.tomwygonik_com.zone_id
   name    = "tomwygonik.com"
   type    = "TXT"
   ttl     = "3600"
@@ -11,7 +11,7 @@ resource "aws_route53_record" "gsuite_tomwygonik_com_validation" {
 }
 
 resource "aws_route53_record" "gsuite_tomwygonik_com_MX" {
-  zone_id = "${aws_route53_zone.tomwygonik_com.zone_id}"
+  zone_id = aws_route53_zone.tomwygonik_com.zone_id
   name    = "tomwygonik.com"
   type    = "MX"
   ttl     = "3600"

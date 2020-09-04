@@ -3,7 +3,7 @@ resource "aws_route53_zone" "thomaswygonik_com" {
 }
 
 resource "aws_route53_record" "gsuite_thomaswygonik_com_validation" {
-  zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
+  zone_id = aws_route53_zone.thomaswygonik_com.zone_id
   name    = "thomaswygonik.com"
   type    = "TXT"
   ttl     = "3600"
@@ -12,7 +12,7 @@ resource "aws_route53_record" "gsuite_thomaswygonik_com_validation" {
 }
 
 resource "aws_route53_record" "gsuite_thomaswygonik_com_dkim" {
-  zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
+  zone_id = aws_route53_zone.thomaswygonik_com.zone_id
   name    = "google._domainkey"
   type    = "TXT"
   ttl     = "3600"
@@ -20,7 +20,7 @@ resource "aws_route53_record" "gsuite_thomaswygonik_com_dkim" {
 }
 
 resource "aws_route53_record" "gsuite_thomaswygonik_com_DMARC" {
-  zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
+  zone_id = aws_route53_zone.thomaswygonik_com.zone_id
   name    = "_dmarc.solarmora.com"
   type    = "TXT"
   ttl     = "3600"
@@ -28,7 +28,7 @@ resource "aws_route53_record" "gsuite_thomaswygonik_com_DMARC" {
 }
 
 resource "aws_route53_record" "gsuite_thomaswygonik_com_MX" {
-  zone_id = "${aws_route53_zone.thomaswygonik_com.zone_id}"
+  zone_id = aws_route53_zone.thomaswygonik_com.zone_id
   name    = "thomaswygonik.com"
   type    = "MX"
   ttl     = "3600"
