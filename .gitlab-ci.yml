@@ -14,7 +14,7 @@ variables:
 init:
   stage: init
   script:
-    - terragrunt init -reconfigure --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records
+    - terragrunt init --terragrunt-config dns_records/terragrunt.hcl --terragrunt-working-dir dns_records
   cache:
     paths:
       - dns_records/.terraform
