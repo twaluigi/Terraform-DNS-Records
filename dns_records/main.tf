@@ -2,7 +2,6 @@
 provider "aws" {
   version             = "~>3.5.0"
   region              = var.region
-  allowed_account_ids = var.master_account_numbers
 }
 
 terraform {
