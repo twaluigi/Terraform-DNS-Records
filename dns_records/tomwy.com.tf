@@ -8,7 +8,7 @@ resource "aws_route53_record" "home_tomwy_com_subdomain" {
   type = "NS"
   ttl = "172800"
   records = [
-    aws_route53_zone.home_tomwy_com.name_servers.0
+    aws_route53_zone.home_tomwy_com.name_servers.0,
     aws_route53_zone.home_tomwy_com.name_servers.1,
     aws_route53_zone.home_tomwy_com.name_servers.2,
     aws_route53_zone.home_tomwy_com.name_servers.3,
